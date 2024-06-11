@@ -1,4 +1,5 @@
 from django.db import models
+from PIL import Image
 
 # Create your models here.
 class Eixo(models.Model):
@@ -65,6 +66,21 @@ class Indicador(models.Model):
     id_campus = models.ForeignKey(Campus, models.DO_NOTHING, db_column='id_campus', blank=True, null=True)
     nome_indicador = models.TextField(max_length=300, blank=True, null=True, unique=True)
     nota_indicador = models.CharField(max_length=300, blank=True, null=True, unique=True)
+    foto_indicador = models.ImageField(blank=True, null=False)
+
+    def save(self):
+        super().save()
+        im =Image.open(self.foto_indicador.path)
+        novo_tamanho =(40,40)
+        im.thumbnail(novo_tamanho)
+        im.save(self.foto_indicador.path)
+
+
+    def foto_url(self):
+        if self.foto_indicador and hasattr(self.foto_indicador, 'url'):
+            return self.foto_indicador.url
+        else:
+            return self.nome_indicador
 
     def __str__(self):
         return self.nome_indicador

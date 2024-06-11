@@ -30,6 +30,10 @@
                             <div class="col-lg-4 ">
                                 {{ form.id_campus |as_crispy_field }}
                             </div>
+                            <div class="col-lg-4 ">
+                                {{ form.foto_indicador |as_crispy_field }}
+                            </div>
+
                         </div>
                     </div>
                 </div>
@@ -45,6 +49,7 @@
             <thead>
             <tr>
                 <td>Item</td>
+                <td></td>
                 <td>Nome da Indicador</td>
                 <td>Eixo</td>
                 <td>Dimensão</td>
@@ -60,6 +65,7 @@
             {% for ind in inds %}
                 <tr>
                     <td>{{ ind.id_indicador }}</td>
+                    <td><img src="{{ ind.foto_url }}" alt="icone"></td>
                     <td>{{ ind.nome_indicador }}</td>
                     <td>{{ ind.id_eixo }}</td>
                     <td>{{ ind.id_dim }}</td>

@@ -15,7 +15,11 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.template.defaulttags import url
+from django.urls import path, re_path, include
+from django.conf.urls.static import static
+from django.views.static import serve
+from django.conf import settings
 from cpasisApp.views import principal, new_eixo, editar_eixo, deletar_eixo, editar_dim,deletar_dim, new_dim
 from cpasisApp.views import new_ind, editar_ind, deletar_ind, new_campus, editar_campus, deletar_campus
 from cpasisApp.views import new_pub, deletar_publico, editar_publico, new_tipo, editar_tipo, deletar_tipo,editar_curso,new_curso,deletar_curso
@@ -51,7 +55,10 @@ urlpatterns = [
     path('editar_curso/<str:id>', editar_curso, name='editar_curso'),
     path('deletar_curso/<str:id>', deletar_curso, name='deletar_curso'),
 
+    re_path(r'^img/(?P<path>.*)$', serve, {'document_root': settings.MEDIA_ROOT}),
+
 
 
 
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

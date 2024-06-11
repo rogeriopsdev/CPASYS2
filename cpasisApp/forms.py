@@ -20,7 +20,7 @@ class DimensaoForm(forms.ModelForm):
 class IndicadorForm(forms.ModelForm):
     class Meta:
         model= Indicador
-        fields =['nome_indicador','id_eixo','id_dim', 'nota_indicador', 'id_pub', 'id_curso','id_campus']
+        fields =['nome_indicador','id_eixo','id_dim', 'nota_indicador', 'id_pub', 'id_curso','id_campus','foto_indicador']
         nome_indicador = forms.CharField(label='Indicador')
         nota_indicador = forms.CharField(label='Nota')
 
