@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     'cpasisApp',
     "crispy_forms",
     "crispy_bootstrap5",
+    "usuariosApp",
+    'widget_tweaks',
 ]
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 
@@ -133,3 +135,6 @@ MEDIA_ROOT =   os.path.join(BASE_DIR, 'cpasisApp/static/img')
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+LOGIN_REDIRECT_URL ='home'
+LOGIN_URL='login'
+LOGOUT_REDIRECT_URL='home'

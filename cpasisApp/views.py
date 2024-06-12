@@ -8,6 +8,10 @@ def principal(request):
     return render(request, 'cpasis/principal.html')
 
 
+def home(request):
+
+    return render(request, 'cpasis/home.html')
+
 def new_eixo(request):
     form = EixoForm(request.POST)
     eixos = Eixo.objects.all()
